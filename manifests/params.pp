@@ -113,6 +113,9 @@ class mrepo::params (
   $https_proxy    = '',
   $priority       = '10',
   $port           = '80',
+  $smtp_server    = 'UNSET',
+  $hardlink       = 'UNSET',
+  $lftp_cleanup   = 'UNSET',
 ) {
   validate_re($source, '^git$|^package$')
   validate_re($git_proto, '^git$|^https$')

@@ -54,5 +54,7 @@ class mrepo::webservice(
         docroot => $docroot,
       }
     }
+    disable: {
+    }
   }
 }

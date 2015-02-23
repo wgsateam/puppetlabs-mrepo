@@ -21,3 +21,13 @@ rhnlogin = <%= @rhn_username %>
 <% unless (mailto = @mailto) == 'UNSET' -%>
 mailto = <%= mailto %>
 <% end -%>
+<% unless (smtp_server = @smtp_server) == 'UNSET' -%>
+smtp-server = <%= smtp_server %>
+<% end -%>
+<% unless (hardlink = @hardlink) == 'UNSET' -%>
+hardlink = <%= hardlink %>
+<% end -%>
+<% unless (lftp_cleanup = @lftp_cleanup) == 'UNSET' -%>
+lftp-cleanup = <%= lftp_cleanup %>
+<% end -%>
+lftp-mirror-options = -P=8
