@@ -54,16 +54,17 @@ class mrepo::package {
 
   # mrepo.conf template params
   #
-  $src_root     = $mrepo::params::src_root
-  $www_root     = $mrepo::params::www_root
-  $rhn_username = $mrepo::params::rhn_username
-  $rhn_password = $mrepo::params::rhn_password
-  $mailto       = $mrepo::params::mailto
-  $smtp_server  = $mrepo::params::smtp_server
-  $hardlink     = $mrepo::params::hardlink
-  $lftp_cleanup = $mrepo::params::lftp_cleanup
-  $http_proxy   = $mrepo::params::http_proxy
-  $https_proxy  = $mrepo::params::https_proxy
+  $src_root           = $mrepo::params::src_root
+  $www_root           = $mrepo::params::www_root
+  $rhn_username       = $mrepo::params::rhn_username
+  $rhn_password       = $mrepo::params::rhn_password
+  $mailto             = $mrepo::params::mailto
+  $smtp_server        = $mrepo::params::smtp_server
+  $hardlink           = $mrepo::params::hardlink
+  $lftp_cleanup       = $mrepo::params::lftp_cleanup
+  $http_proxy         = $mrepo::params::http_proxy
+  $https_proxy        = $mrepo::params::https_proxy
+  $createrepo_options = $mrepo::params::createrepo_options
 
   file { '/etc/mrepo.conf':
     ensure  => present,
