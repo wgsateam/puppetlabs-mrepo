@@ -31,6 +31,7 @@ hardlink = <%= hardlink %>
 lftp-cleanup = <%= lftp_cleanup %>
 <% end -%>
 lftp-mirror-options = -P=8
+lftp-exclude-debug = no
 <% unless (hardlink = @createrepo_options) == 'UNSET' -%>
 createrepo-options = <%= @createrepo_options -%>
 <% end -%>
