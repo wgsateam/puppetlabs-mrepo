@@ -65,6 +65,7 @@ class mrepo::package {
   $http_proxy         = $mrepo::params::http_proxy
   $https_proxy        = $mrepo::params::https_proxy
   $createrepo_options = $mrepo::params::createrepo_options
+  $reposync_options   = $mrepo::params::reposync_options
 
   file { '/etc/mrepo.conf':
     ensure  => present,
