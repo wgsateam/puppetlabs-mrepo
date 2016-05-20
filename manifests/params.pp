@@ -118,6 +118,7 @@ class mrepo::params (
   $lftp_cleanup       = 'UNSET',
   $createrepo_options = 'UNSET',
   $reposync_options   = 'UNSET',
+  $reposync_cleanup   = 'UNSET',
 ) {
   validate_re($source, '^git$|^package$')
   validate_re($git_proto, '^git$|^https$')
