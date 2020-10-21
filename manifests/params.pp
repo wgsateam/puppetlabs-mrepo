@@ -91,47 +91,35 @@
 # Copyright 2011 Puppet Labs, unless otherwise noted
 #
 class mrepo::params (
-  $src_root           = '/var/mrepo',
-  $www_root           = '/var/www/mrepo',
-  $www_servername     = 'mrepo',
-  $www_ip             = $::ipaddress,
-  $www_ip_based       = false,
-  $user               = 'apache',
-  $group              = 'apache',
-  $source             = 'package',
-  $ensure_src         = 'latest',
-  $selinux            = undef,
-  $rhn                = false,
-  $rhn_config         = false,
-  $rhn_username       = '',
-  $rhn_password       = '',
-  $genid_command      = '/usr/bin/gensystemid',
-  $mailto             = 'UNSET',
-  $git_proto          = 'git',
-  $descriptions       = {},
-  $http_proxy         = '',
-  $https_proxy        = '',
-  $priority           = '10',
-  $port               = '80',
-  $smtp_server        = 'UNSET',
-  $hardlink           = 'UNSET',
-  $lftp_cleanup       = 'UNSET',
-  $createrepo_options = 'UNSET',
-  $reposync_options   = 'UNSET',
-  $reposync_cleanup   = 'UNSET',
+  Optional[Enum['git', 'package']] $source      = 'package',
+  Optional[Enum['git', 'https']] $git_proto     = 'git',
+  Optional[Integer] $priority                   = 10,
+  Optional[Integer] $port                       = 80,
+  Optional[Boolean] $rhn                        = false,
+  Optional[Boolean] $rhn_config                 = false,
+  Optional[String] $rhn_username                = '',
+  Optional[String] $rhn_password                = '',
+  Optional[Hash] $descriptions                  = {},
+  Optional[Stdlib::Absolutepath] $src_root      = '/var/mrepo',
+  Optional[Stdlib::Absolutepath] $www_root      = '/var/www/mrepo',
+  Optional[String] $www_servername              = 'mrepo',
+  Optional[Stdlib::IP::Address] $www_ip         = $::ipaddress,
+  Optional[Boolean] $www_ip_based               = false,
+  Optional[String] $user                        = 'apache',
+  Optional[String] $group                       = 'apache',
+  Optional[String] $ensure_src                  = 'latest',
+  Optional[Stdlib::Absolutepath] $genid_command = '/usr/bin/gensystemid',
+  Optional[String] $mailto                      = 'UNSET',
+  Optional[String] $http_proxy                  = '',
+  Optional[String] $https_proxy                 = '',
+  Optional[String] $smtp_server                 = 'UNSET',
+  Optional[String] $hardlink                    = 'UNSET',
+  Optional[String] $lftp_cleanup                = 'UNSET',
+  Optional[String] $createrepo_options          = 'UNSET',
+  Optional[String] $reposync_options            = 'UNSET',
+  Optional[String] $reposync_cleanup            = 'UNSET',
+  $selinux                                      = undef,
 ) {
-  validate_re($source, '^git$|^package$')
-  validate_re($git_proto, '^git$|^https$')
-  validate_re($priority, '^\d+$')
-  validate_re($port, '^\d+$')
-  validate_bool($rhn)
-  validate_hash($descriptions)
-
-  if $rhn {
-    validate_re($rhn_username, '.+')
-    validate_re($rhn_password, '.+')
-  }
-
 
   # Validate selinux usage. If manually set, validate as a bool and use that value.
   # If undefined and selinux is present and not disabled, use selinux.
